@@ -2,7 +2,7 @@
 
 For some projects, you can get by with just enough planning and you leave the door open for making adjustments as you execute the plan. Adjustments are in the form of flexing either or both the schedule and scope. For other projects, you might be faced with strict deadlines forcing you to fix the dates. This at least gives you some wiggle room to flex the scope as you execute the plan. 
 
-The most challenging types of projects are where the dates are fixed, and the scope has been reduced to the bare bones. There is no margin for error. To execute these kinds of projects successfully, requires significant planning discipline. These tools were developed out of necessity when the author was faced with
+The most challenging types of projects are where the dates are fixed, and the scope has been reduced to the bare bones. There is no margin for error. To execute these kinds of projects successfully, requires significant planning discipline. These tools were conceived out of necessity when the author was faced with
 such a situation. 
 
 The tools enable capacity to be determined for the team for a given planning time period.
