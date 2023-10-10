@@ -15,7 +15,7 @@ Be sure to checkout the [cookbook](https://github.com/jasondchambers/agileplanne
 
 - How much QE capacity do we have for a given time period? (e.g. remaining for the quarter, Q2, Q3)
 - How much front end capacity do we have for a given time period for a specific team?
-- How much total back end capacity do we have for the entire PIAM org for Q2?
+- How much total back end capacity do we have for the entire org for Q2?
 - What is the estimated capacity for a team's sprint?
 
 All it requires is that we have details of each team and person on that team to be captured in a YAML.
