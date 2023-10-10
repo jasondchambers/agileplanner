@@ -22,7 +22,7 @@ All it requires is that we have details of each team and person on that team to 
 
 ```yaml
 team:
-  name: SoftServe for Ed
+  name: DevOps team
   persons:
   - name: Billy Ted
     start_date: '2023-09-13'
