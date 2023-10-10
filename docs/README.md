@@ -29,6 +29,7 @@ team:
     back_end: False
     qe: False
     devops: True
+    documentation: False
     reserve_capacity: 0.35
     location: Ukraine
     out_of_office_dates:
@@ -40,8 +41,11 @@ team:
     - '2023-10-10'
 ```
 
-Given this, we can generate a capacity spreadsheet (CSV) broken down by person and by day for each person on the team
-for any time period.
+Given this, we can generate a capacity spreadsheet (CSV) broken down by person and by day for each person on the team for any time period.
+
+You can easily combine teams together enabling capacity to be calculated for an entire organization.
+
+A pandas DataFrame can easily be created from the team capacity, enabling querying and exploring of the available capacity. For example, you might want to query how much capacity you have for QE or Documentation.
 
 ## Epic scheduling tools
 
@@ -68,10 +72,11 @@ features:
 
 Each epic can be of the following type:
 
-- FRONTEND
-- BACKEND
-- QE
-- DOCUMENTATION
+- FRONTEND 
+- BACKEND 
+- QE 
+- DEVOPS 
+- DOCUMENTATION 
 
 Epics that are of mixed types are not supported at this time. I need to figure out what that might look like.
 
