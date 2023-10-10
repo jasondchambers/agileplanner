@@ -9,6 +9,8 @@ The tools enable capacity to be determined for the team for a given planning tim
 
 In addition, scheduling tools are provided that take into account, the type of work (epic) matching the skillset of the team. The start date and end date for an epic (if the work fits) is calculated and can be subsequently plugged into your tool of choice (e.g. Jira). As the project progresses, you can easily determine if the project is off-track if epics are not starting or finishing on time. These indicators do not replace any metrics you might have in place at the sprint level. They can be used in addition to get a sense of whether the project is on-track or not.
 
+Be sure to checkout the [cookbook](https://github.com/jasondchambers/agileplanner-cookbook) to learn how to use Agile Planner.
+
 ## Capacity estimation tools
 
 - How much QE capacity do we have for a given time period? (e.g. remaining for the quarter, Q2, Q3)

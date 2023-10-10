@@ -30,11 +30,5 @@ Agile Planner is not ready yet to be published to PyPi. There is still much work
 $ pip install --force-reinstall <location>/dist/agileplanner-0.0.1-py3-none-any.whl
 ```
 
-Then, to use in your own code, simply to get started.
-
-```
-import agileplanner as ap 
-```
-
-Example code can be found in the repo aptest (details to be provided).
+Be sure to checkout the [cookbook](https://github.com/jasondchambers/agileplanner-cookbook) to learn how to use Agile Planner.
 
