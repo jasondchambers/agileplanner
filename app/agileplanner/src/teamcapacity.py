@@ -1,3 +1,4 @@
+"""TeamCapacity."""
 from datetime import date
 import pandas as pd
 from .team import Team
@@ -6,9 +7,11 @@ from .person import Person
 from .epic import EpicType
 
 class TeamCapacity():
+    # pylint: disable=line-too-long, too-many-instance-attributes
+    """Class representing the capacity for a team."""
     def __init__(self,  team: Team, start_date:date, end_date:date, holiday_schedule:HolidaySchedulePort) -> None:
         self.team = team
-        self.start_date = start_date  
+        self.start_date = start_date
         self.end_date = end_date
         self.date_range = pd.date_range(start_date,end_date, freq="D")
         self.holiday_schedule = holiday_schedule
@@ -35,15 +38,18 @@ class TeamCapacity():
         for column_heading in all_column_headings:
             self.data[column_heading] = []
         self.detailed_capacity_data = {}
-    
+        self.df = None
+
     def is_person_unavailable(self,person):
+        """Returns true if the person is unavailable for the time period."""
         if person.start_date > self.end_date:
             return True
-        elif person.end_date < self.start_date:
+        if person.end_date < self.start_date:
             return True
         return False
 
     def populate_leading_static_columns_for_person(self,person:Person):
+        """Populates the leading static columns for a person."""
         self.data['Team'].append(self.team.name)
         self.data['Person'].append(person.name)
         self.data['Location'].append(person.location)
@@ -57,12 +63,14 @@ class TeamCapacity():
         self.data['Reserve Capacity'].append(person.reserve_capacity)
 
     def populate_daily_columns_with_zeros_for_person(self,person):
+        """Populates the daily columns with zeros for a person."""
         for daily_column in self.daily_column_headings:
             self.data[daily_column].append(0)
             self.populate_detailed_capacity(daily_column,person,0)
         self.data['Total'].append(0)
 
     def populate_detailed_capacity(self,for_day,person,capacity_for_person_for_this_day):
+        """Populates the detailed capacity for a person for a given day."""
         detailed_capacity_data_for_day = self.detailed_capacity_data.setdefault(for_day, {})
         detailed_capacity_data_for_day_for_person = detailed_capacity_data_for_day.setdefault(person.name, {}) 
         detailed_capacity_data_for_day_for_person[EpicType.FRONTEND.name] = [
@@ -77,12 +85,15 @@ class TeamCapacity():
             capacity_for_person_for_this_day if person.documentation else 0]
 
     def its_the_weekend(self,dayofweek):
-        return dayofweek > 4 
+        """Returns true if the given day of the week is a weekend."""
+        return dayofweek > 4
 
     def its_a_holiday(self, some_date, location):
+        """Returns true if the given date is a holiday."""
         return self.holiday_schedule.falls_on_holiday(some_date,location)
 
     def populate_daily_columns_for_person(self,person):
+        """Populates the daily columns for a person."""
         total = 0
         for dt in self.date_range:
             daily_column = dt.strftime('%Y-%m-%d')
@@ -97,8 +108,9 @@ class TeamCapacity():
                 self.populate_detailed_capacity(daily_column,person,capacity_for_person_for_this_day)
                 total += capacity_for_person_for_this_day 
         self.data['Total'].append(total)
-    
+
     def populate_total_row(self):
+        """Populates the total row."""
         for leading_static_column in self.leading_static_column_headings:
             if leading_static_column == 'Team':
                 self.data[leading_static_column].append(self.team.name)
@@ -115,6 +127,7 @@ class TeamCapacity():
         self.data['Total'].append(team_total)
 
     def calculate(self):
+        """Calculates the capacity for the team."""
         for person in self.team.person_list:
             self.populate_leading_static_columns_for_person(person)
             if self.is_person_unavailable(person):
@@ -123,7 +136,7 @@ class TeamCapacity():
                 self.populate_daily_columns_for_person(person)
         self.populate_total_row()
         self.df = pd.DataFrame(self.data)
-        print(self.df)
 
     def get_df(self) -> pd.DataFrame:
-        return self.df   
+        """Returns the capacity data as a pandas dataframe."""
+        return self.df

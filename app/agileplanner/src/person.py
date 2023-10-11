@@ -1,7 +1,9 @@
+"""Person class."""""
 from datetime import date
 from typing import NamedTuple
 
 class Person(NamedTuple):
+    """Class representing a person."""
     name: str
     start_date: date
     end_date: date
@@ -15,15 +17,19 @@ class Person(NamedTuple):
     out_of_office_dates: list[date]
 
     def is_out_of_office(self,some_date) -> bool:
+        """Returns true if the person is out of office on the given date."""
         return some_date in self.out_of_office_dates
     
     def is_not_active(self, some_date) -> bool:
+        """Returns true if the person is not active on the given date."""
         return self.start_date > some_date or self.end_date < some_date
 
     def is_not_available(self, some_date) -> bool:
+        """Returns true if the person is not available on the given date."""
         return self.is_out_of_office(some_date) or self.is_not_active(some_date)
 
     def to_yaml(self):
+        """Converts the person to yaml."""
         return {
             'name': self.name,
             'start_date': self.start_date.isoformat(),
@@ -40,4 +46,3 @@ class Person(NamedTuple):
 
     def __str__(self) -> str:
         return f'Person: {self.name} {self.start_date} {self.end_date} {self.country}'
-
