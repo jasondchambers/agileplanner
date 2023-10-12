@@ -29,7 +29,7 @@ setup(
     packages=find_packages(where="app"),
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="http://www.google.com", #TODO
+    url="https://github.com/jasondchambers/agileplanner",
     author="Jason Chambers",
     author_email="jason.d.chambers@gmail.com",
     license="MIT",
