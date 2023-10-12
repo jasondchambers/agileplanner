@@ -1,26 +1,24 @@
-
+""" Setup script for agileplanner package."""
+# pylint: disable=deprecated-module
 from distutils.command.clean import clean
 import os
 from shutil import rmtree
 from setuptools import setup, find_packages
 
 class CleanCommand(clean):
-    """
-    Custom implementation of ``clean`` setuptools command."""
-    CLEAN_FILES = './dist ./*.pyc ./*.tgz ./*.egg-info'.split(' ')
+    """Custom implementation of ``clean`` setuptools command."""
     CLEAN_FILES = 'dist ./app/agileplanner.egg-info'.split(' ')
 
     def run(self):
         """After calling the super class implementation, this function removes
-        the dist directory if it exists."""
-        self.all = True  # --all by default when cleaning
+        the dist directory and egg-info file if they exists."""
         super().run()
         for item_to_clean in self.CLEAN_FILES:
             print(f'Cleaning {item_to_clean}')
             if os.path.exists(item_to_clean):
-               rmtree(item_to_clean)
+                rmtree(item_to_clean)
 
-with open("docs/README.md", "r") as f:
+with open("docs/README.md", "r", encoding="utf-8") as f:
     long_description = f.read()
 
 setup(
