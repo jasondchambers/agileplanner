@@ -38,7 +38,7 @@ Be sure to checkout the [cookbook](https://github.com/jasondchambers/agileplanne
 
 ## Publishing
 
-Agile Planner is published on the [Python Package Index](https:://pypi.org) at this [location](https://pypi.org/project/agileplanner/).
+Agile Planner is published on the [Python Package Index](https://pypi.org) at this [location](https://pypi.org/project/agileplanner/).
 
 Once built, a new version can be published using [twine](https://twine.readthedocs.io/en/stable/) as follows:
 
