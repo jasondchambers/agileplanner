@@ -41,6 +41,9 @@ setup(
         "Topic :: Office/Business :: Scheduling"
     ],
     install_requires=["pandas >= 2.1.1", "pyYAML >= 6.0.1"],
+    extras_require={
+        "dev": ["twine>=4.0.2"]
+    },
     python_requires=">=3.10",
     cmdclass={
         'clean': CleanCommand,

@@ -19,6 +19,7 @@ The tools are built into a Python package as follows:
 
 ```
 $ python setup.py bdist_wheel
+$ python setup.py sdist   
 ```
 
 The build can be cleaned up as follows:
@@ -27,7 +28,7 @@ The build can be cleaned up as follows:
 $ python3 setup.py clean --all
 ```
 
-Agile Planner is not ready yet to be published to PyPi. There is still much work to be done. However, once built you can install locally as follows (using a different conda environment) where location is the directory where you cloned this repo:
+Once built you can install locally as follows (using a different conda environment) where location is the directory where you cloned this repo:
 
 ```
 $ pip install --force-reinstall <location>/dist/agileplanner-0.0.1-py3-none-any.whl
@@ -35,3 +36,13 @@ $ pip install --force-reinstall <location>/dist/agileplanner-0.0.1-py3-none-any.
 
 Be sure to checkout the [cookbook](https://github.com/jasondchambers/agileplanner-cookbook) to learn how to use Agile Planner.
 
+## Publishing
+
+Agile Planner is published on the [Python Package Index](https:://pypi.org) at this [location](https://pypi.org/project/agileplanner/).
+
+Once built, a new version can be published using [twine](https://twine.readthedocs.io/en/stable/) as follows:
+
+```
+$ twine check dist/*
+$ twine upload dist/*
+```
