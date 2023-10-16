@@ -47,9 +47,9 @@ class TestTeamScheduler(unittest.TestCase):
         )
         team1 = Team('Team1', 'team1.yaml').load_from_yaml_as_string(team1_document)
         team1_capacity = TeamCapacity(
-            team1, 
-            time_period.start_date, 
-            time_period.end_date,HolidayScheduleForTesting())
+            team1,
+            time_period,
+            HolidayScheduleForTesting())
         team1_capacity.calculate()
         scheduler = TeamScheduler(team1_capacity,[e1])
         schedule_results = scheduler.build_schedule()
@@ -88,8 +88,8 @@ class TestTeamScheduler(unittest.TestCase):
         team1 = Team('Team1', 'team1.yaml').load_from_yaml_as_string(team1_document)
         team1_capacity = TeamCapacity(
             team1, 
-            time_period.start_date, 
-            time_period.end_date,HolidayScheduleForTesting())
+            time_period,
+            HolidayScheduleForTesting())
         team1_capacity.calculate()
         scheduler = TeamScheduler(team1_capacity,[e1])
         schedule_results = scheduler.build_schedule()
@@ -128,9 +128,9 @@ class TestTeamScheduler(unittest.TestCase):
         )
         team1 = Team('Team1', 'team1.yaml').load_from_yaml_as_string(team1_document)
         team1_capacity = TeamCapacity(
-            team1, 
-            time_period.start_date, 
-            time_period.end_date,HolidayScheduleForTesting())
+            team1,
+            time_period,
+            HolidayScheduleForTesting())
         team1_capacity.calculate()
         scheduler = TeamScheduler(team1_capacity,[e1])
         schedule_results = scheduler.build_schedule()
@@ -174,9 +174,9 @@ class TestTeamScheduler(unittest.TestCase):
         )
         team1 = Team('Team1', 'team1.yaml').load_from_yaml_as_string(team1_document)
         team1_capacity = TeamCapacity(
-            team1, 
-            time_period.start_date, 
-            time_period.end_date,HolidayScheduleForTesting())
+            team1,
+            time_period,
+            HolidayScheduleForTesting())
         team1_capacity.calculate()
         scheduler = TeamScheduler(team1_capacity,[e1,e2])
         schedule_results = scheduler.build_schedule()
@@ -231,9 +231,9 @@ class TestTeamScheduler(unittest.TestCase):
         )
         team1 = Team('Team1', 'team1.yaml').load_from_yaml_as_string(team1_document)
         team1_capacity = TeamCapacity(
-            team1, 
-            time_period.start_date, 
-            time_period.end_date,HolidayScheduleForTesting())
+            team1,
+            time_period,
+            HolidayScheduleForTesting())
         team1_capacity.calculate()
         scheduler = TeamScheduler(team1_capacity,[e1])
         schedule_results = scheduler.build_schedule()
@@ -284,8 +284,8 @@ class TestTeamScheduler(unittest.TestCase):
         team1 = Team('Team1', 'team1.yaml').load_from_yaml_as_string(team1_document)
         team1_capacity = TeamCapacity(
             team1,
-            time_period.start_date,
-            time_period.end_date,HolidayScheduleForTesting())
+            time_period,
+            HolidayScheduleForTesting())
         team1_capacity.calculate()
         scheduler = TeamScheduler(team1_capacity,[e1])
         schedule_results = scheduler.build_schedule()
@@ -330,8 +330,8 @@ class TestTeamScheduler(unittest.TestCase):
         team1 = Team('Team1', 'team1.yaml').load_from_yaml_as_string(team1_document)
         team1_capacity = TeamCapacity(
             team1,
-            time_period.start_date,
-            time_period.end_date,HolidayScheduleForTesting())
+            time_period,
+            HolidayScheduleForTesting())
         team1_capacity.calculate()
         scheduler = TeamScheduler(team1_capacity,[e1,e2])
         schedule_results = scheduler.build_schedule()
@@ -382,8 +382,8 @@ class TestTeamScheduler(unittest.TestCase):
         team1 = Team('Team1', 'team1.yaml').load_from_yaml_as_string(team1_document)
         team1_capacity = TeamCapacity(
             team1,
-            time_period.start_date,
-            time_period.end_date,HolidayScheduleForTesting())
+            time_period,
+            HolidayScheduleForTesting())
         team1_capacity.calculate()
         scheduler = TeamScheduler(team1_capacity,[e1,e2])
         schedule_results = scheduler.build_schedule()
@@ -441,8 +441,8 @@ class TestTeamScheduler(unittest.TestCase):
         team1 = Team('Team1', 'team1.yaml').load_from_yaml_as_string(team1_document)
         team1_capacity = TeamCapacity(
             team1,
-            time_period.start_date,
-            time_period.end_date,HolidayScheduleForTesting())
+            time_period,
+            HolidayScheduleForTesting())
         team1_capacity.calculate()
         scheduler = TeamScheduler(team1_capacity,[e1,e2,e3])
         schedule_results = scheduler.build_schedule()

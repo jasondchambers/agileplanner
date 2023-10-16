@@ -21,8 +21,7 @@ def generate_capacity_sheet_for_team(
     """
     team_capacity = TeamCapacity(
         team,
-        time_period.start_date,
-        time_period.end_date,
+        time_period,
         holiday_schedule=holiday_schedule,
     )
     team_capacity.calculate()

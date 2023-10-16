@@ -1,19 +1,21 @@
 """TeamCapacity."""
-from datetime import date
 import pandas as pd
 from .team import Team
 from .holiday import HolidaySchedulePort
 from .person import Person
 from .epic import EpicType
+from .timeperiod import TimePeriod
 
 class TeamCapacity():
     # pylint: disable=line-too-long, too-many-instance-attributes
     """Class representing the capacity for a team."""
-    def __init__(self,  team: Team, start_date:date, end_date:date, holiday_schedule:HolidaySchedulePort) -> None:
+    def __init__(self,  team: Team, time_period:TimePeriod, holiday_schedule:HolidaySchedulePort) -> None:
+        if time_period.is_valid() is False:
+            raise ValueError('Invalid time period')
         self.team = team
-        self.start_date = start_date
-        self.end_date = end_date
-        self.date_range = pd.date_range(start_date,end_date, freq="D")
+        self.start_date = time_period.start_date
+        self.end_date = time_period.end_date
+        self.date_range = pd.date_range(time_period.start_date,time_period.end_date, freq="D")
         self.holiday_schedule = holiday_schedule
         self.total_capacity_data = {}
         self.leading_static_column_headings = [
