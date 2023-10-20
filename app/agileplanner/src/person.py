@@ -1,6 +1,6 @@
 """Person class."""""
 from datetime import date
-from typing import NamedTuple
+from typing import Any, NamedTuple
 
 class Person(NamedTuple):
     """Class representing a person."""
@@ -16,19 +16,19 @@ class Person(NamedTuple):
     location: str
     out_of_office_dates: list[date]
 
-    def is_out_of_office(self,some_date) -> bool:
+    def is_out_of_office(self,some_date: date) -> bool:
         """Returns true if the person is out of office on the given date."""
         return some_date in self.out_of_office_dates
     
-    def is_not_active(self, some_date) -> bool:
+    def is_not_active(self, some_date: date) -> bool:
         """Returns true if the person is not active on the given date."""
         return self.start_date > some_date or self.end_date < some_date
 
-    def is_not_available(self, some_date) -> bool:
+    def is_not_available(self, some_date: date) -> bool:
         """Returns true if the person is not available on the given date."""
         return self.is_out_of_office(some_date) or self.is_not_active(some_date)
 
-    def to_yaml(self):
+    def to_yaml(self) -> dict[str, Any]:
         """Converts the person to yaml."""
         return {
             'name': self.name,
@@ -45,4 +45,4 @@ class Person(NamedTuple):
         }
 
     def __str__(self) -> str:
-        return f'Person: {self.name} {self.start_date} {self.end_date} {self.country}'
+        return f'Person: {self.name} {self.start_date} {self.end_date} {self.location}'

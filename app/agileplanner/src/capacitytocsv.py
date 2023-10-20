@@ -4,7 +4,6 @@ from .teamcapacity import TeamCapacity
 from .timeperiod import TimePeriod
 from .holiday import HolidaySchedulePort
 
-
 def generate_capacity_sheet_for_team(
         team: Team, time_period: TimePeriod,
         holiday_schedule: HolidaySchedulePort) -> TeamCapacity:
@@ -26,13 +25,13 @@ def generate_capacity_sheet_for_team(
     )
     team_capacity.calculate()
     df = team_capacity.get_df()
-    csv_name = team.name + "_" + time_period.name + ".csv"
+    csv_name: str = team.name + "_" + time_period.name + ".csv"
     df.to_csv(csv_name)
     return team_capacity
 
 def generate_capacity_sheet_for_org(
         org_name: str,
-        teams: list,
+        teams: list[Team],
         time_period: TimePeriod,
         holiday_schedule: HolidaySchedulePort) -> TeamCapacity:
     """ Generates a capacity sheet for a given organization and time period."""

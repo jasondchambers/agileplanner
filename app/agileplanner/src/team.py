@@ -1,14 +1,15 @@
 """Team."""
 from datetime import date
+from typing import Any
 import yaml
 from .person import Person
 
 class Team:
     """Class representing a team."""
-    def __init__(self, name:str, file_path) -> None:
-        self.name = name
-        self.file_path = file_path
-        self.person_list = []
+    def __init__(self, name:str, file_path: str) -> None:
+        self.name: str = name
+        self.file_path:str = file_path
+        self.person_list: list[Person] = []
 
     def add_person(self, person: Person) -> None:
         """Adds a person to the team."""
@@ -18,18 +19,18 @@ class Team:
         """Adds a list of people to the team."""
         self.person_list += list_of_people
 
-    def load_from_yaml_as_string(self, yaml_string:str):
+    def load_from_yaml_as_string(self, yaml_string:str) -> 'Team':
         """Loads a team from a yaml string."""
         data = yaml.safe_load(yaml_string)
         return self.load_yaml(data)
 
-    def load_from_yaml_file(self):
+    def load_from_yaml_file(self) -> 'Team':
         """Loads a team from a yaml file."""
         with open(self.file_path, 'r', encoding='utf-8') as file:
             data = yaml.safe_load(file)
             return self.load_yaml(data)
 
-    def load_yaml(self,data):
+    def load_yaml(self,data:Any) -> 'Team':
         # pylint: disable=line-too-long
         """Loads a team from yaml."""
         team_data = data['team']
@@ -54,12 +55,12 @@ class Team:
 
     def to_yaml(self):
         """Writes the team to a yaml file."""
-        persons = []
+        persons_data:list[dict[str,Any]] = []
         for person in self.person_list:
-            persons.append(person.to_yaml())
+            persons_data.append(person.to_yaml())
         team_data = {
             'name': self.name,
-            'persons': persons
+            'persons': persons_data
         }
         data = {'team' :team_data}
 

@@ -1,4 +1,5 @@
 """Feature."""
+from typing import Any
 import yaml
 from .epic import Epic, EpicType
 
@@ -13,7 +14,7 @@ class Feature:
         """Adds an epic to the feature."""
         self.epic_list.append(epic)
 
-    def to_yaml(self):
+    def to_yaml(self) -> dict[str, Any]:
         """Converts the feature to a yaml."""
         return {
             'key': self.key,
@@ -23,7 +24,7 @@ class Feature:
 class Features:
     """Class representing a list of features."""
 
-    def __init__(self, file_path) -> None:
+    def __init__(self, file_path: str) -> None:
         self.feature_list: list[Feature] = []
         self.file_path = file_path
 
@@ -31,18 +32,18 @@ class Features:
         """Adds a feature to the list."""
         self.feature_list.append(feature)
 
-    def load_from_yaml_as_string(self, yaml_string:str):
+    def load_from_yaml_as_string(self, yaml_string:str) -> 'Features':
         """Loads features from a yaml string."""
         data = yaml.safe_load(yaml_string)
         return self.load_yaml(data)
 
-    def load_from_yaml_file(self):
+    def load_from_yaml_file(self) -> 'Features':
         """Loads features from a yaml file."""
         with open(self.file_path, 'r', encoding="utf-8") as file:
             data = yaml.safe_load(file)
             return self.load_yaml(data)
 
-    def load_yaml(self,data):
+    def load_yaml(self,data:Any) -> 'Features':
         """Loads features from a yaml."""
         for feature_data in data['features']:
             feature = Feature(feature_data['key'])
@@ -57,17 +58,17 @@ class Features:
 
     def get_epics(self) -> list[Epic]:
         """Gets a list of all epics in the features."""
-        l = []
+        l:list[Epic] = []
         for feature in self.feature_list:
             l = l + feature.epic_list
         return l
 
     def to_yaml(self):
         """Writes the features to yaml file."""
-        features = []
+        features_data:list[dict[str, Any]] = []
         for feature in self.feature_list:
-            features.append(feature.to_yaml())
-        data = {'features' :features}
+            features_data.append(feature.to_yaml())
+        data: Any = {'features' :features_data}
 
         with open(self.file_path, 'w', encoding="utf-8") as file:
             yaml.dump(data, file, sort_keys=False)

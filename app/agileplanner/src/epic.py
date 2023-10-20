@@ -1,6 +1,6 @@
 """Epic."""
 from enum import Enum
-from typing import NamedTuple
+from typing import Any, NamedTuple
 
 class EpicType(Enum):
     """Class representing the various types of supported epics."""
@@ -16,7 +16,7 @@ class Epic(NamedTuple):
     estimated_size: int
     epic_type: EpicType
 
-    def to_yaml(self):
+    def to_yaml(self) -> dict[str, Any]:
         """Converts the epic to a yaml object."""
         return {
             'key': self.key,
